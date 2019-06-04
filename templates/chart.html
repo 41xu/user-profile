@@ -1,0 +1,46 @@
+<!-- myechartsite/djoncharts/templates/djoncharts/pyecharts.html -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">    <script src="echarts.min.js"></script>
+    <title>App可视化 Powered by pyechart</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    {% for jsfile_name in script_list_gender %}
+    <script src="{{host}}/{{jsfile_name}}.js"></script>
+    {% endfor %}
+    {% for jsfile_name in script_list_age %}
+    <script src="{{host}}/{{jsfile_name}}.js"></script>
+    {% endfor %}
+</head>
+
+<body>
+    <div class="container-fluid">
+        <form action="" method="POST" class="navbar-form navbar-left" role="search">
+            <h1>输入appid</h1>
+            <div>
+                <input type="text" placeholder="" required="" id="appid" name="appid" class="form-control" aria-describedby="sizing-addon3/>
+            </div>
+            <div style="margin-left: 110px">
+                <input type="submit" value="确定" class="btn btn-default" />
+            </div>
+        </form>
+        <div style="display:flex;justify-content:center">
+             <div>
+                 {{myechart_gender|safe}}
+             </div>
+             <div>
+                 {{myechart_age|safe}}
+             </div>
+         </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+    <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+</body>
+
+</html>

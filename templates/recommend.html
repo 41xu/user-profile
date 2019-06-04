@@ -1,0 +1,75 @@
+<!-- myechartsite/djoncharts/templates/djoncharts/pyecharts.html -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--<script src="echarts.min.js"></script>-->
+    <title>用户画像 Xusy's Site</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+<div class="container-fluid">
+    <form action="" method="POST" class="navbar-form navbar-left" role="search">
+        <h1>输入您的电话号码，查看您被生成的用户画像</h1>
+        <div>
+            <input type="text" placeholder="您的11位电话号"  id="tel" name="tel" class="form-control"
+                   aria-describedby="sizing-addon3/>
+            </div>
+            <div style=" margin-left: 110px">
+            <input type="submit" value="确定" class="btn btn-default"/>
+        </div>
+    </form>
+    <table class="table table-hover" border="1">
+        {% if flag %}
+            <tr>
+                <th align="center">您使用的appID</th>
+                <th align="center">您使用的app名称</th>
+                <th align="center">您的使用次数</th>
+                <th>您的使用时长</th>
+            </tr>
+            {% for app in apps %}
+                <tr>
+                    <td align="center">{{ app.appid }}</td>
+                    <td align="center">{{ app.appname }}</td>
+                    <td align="center">{{ app.count }}</td>
+                    <td align="center">{{ app.time }}</td>
+                </tr>
+            {% endfor %}
+            <tr>
+
+        {% endif %}
+        <table class="table table-hover" border="1">
+            {% if flag %}
+                <tr>
+                    <th align="center">您是男性的概率</th>
+                    <th align="center">您是女性的概率</th>
+                    <th align="center">您<25岁的概率</th>
+                    <th align="center">您25-30岁的概率</th>
+                    <th align="center">您31-35岁的概率</th>
+                    <th align="center">您35-40岁的概率</th>
+                    <th align="center">您>40岁的概率</th>
+                </tr>
+                <tr>
+                    <td align="center">{{ female }}</td>
+                    <td align="center">{{ male }}</td>
+                    <td align="center">{{ age1 }}</td>
+                    <td align="center">{{ age2 }}</td>
+                    <td align="center">{{ age3 }}</td>
+                    <td align="center">{{ age4 }}</td>
+                    <td align="center">{{ age5 }}</td>
+                </tr>
+            {% endif %}
+
+        </table><!--放在表格中显示-->
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+</body>
+
+</html>
